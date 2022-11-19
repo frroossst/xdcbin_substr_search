@@ -3,3 +3,4 @@
 /test_cases/*
 /.vscode/*
 /.vscode/
+Cargo.lock

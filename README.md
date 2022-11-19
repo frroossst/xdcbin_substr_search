@@ -44,3 +44,7 @@ if that word has a non common character length
     `main() => 6 characters`
 
 - Works best for a static, infrequently changing document
+
+- Specific optimisations need to be made for case sensitive search, which takes more time
+
+- Only useful for literal string matching and not sub string matching

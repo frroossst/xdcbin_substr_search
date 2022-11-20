@@ -32,8 +32,8 @@ fn main()
             if charlen_4.contains(&ws)
                 {
                 let index = charlen_4.iter().position(|ws| ws.cmp(&WordStruct::new(i)) == Ordering::Equal).unwrap();
-                charlen_4[index].add_find_location(index.try_into().unwrap());
-                charlen_4[index].display();
+                charlen_4[index].add_find_location(x.try_into().unwrap());
+                // charlen_4[index].display();
                 }
             else
                 {

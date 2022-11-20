@@ -3,8 +3,8 @@ use std::cmp::Ordering;
 #[derive(Eq)]
 pub struct WordStruct
     {
-    word: String,
-    found: Vec<u128>,
+    pub word: String,
+    pub found: Vec<u128>,
     }
 
 impl WordStruct

@@ -4,11 +4,10 @@
 
 // custom imports
 use xdcbin_substr::def_word::{WordStruct};
-use xdcbin_substr::file_io::{write_to_file};
+use xdcbin_substr::file_io::{write_to_file, create_file};
 
 // std imports
 use std::{fs, cmp::Ordering};
-
 
 
 
@@ -29,11 +28,11 @@ fn main()
         if (i.len() == 4)
             {
             let mut ws = WordStruct::new(i);
+
             if charlen_4.contains(&ws)
                 {
                 let index = charlen_4.iter().position(|ws| ws.cmp(&WordStruct::new(i)) == Ordering::Equal).unwrap();
                 charlen_4[index].add_find_location(x.try_into().unwrap());
-                // charlen_4[index].display();
                 }
             else
                 {
@@ -50,6 +49,6 @@ fn main()
         j.display();
         }
 
-
+    create_file("charlen4.txt");
     write_to_file(charlen_4, "charlen4.txt");
     }

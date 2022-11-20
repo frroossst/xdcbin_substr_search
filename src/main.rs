@@ -4,7 +4,7 @@
 
 // custom imports
 use xdcbin_substr::def_word::{WordStruct};
-use xdcbin_substr::file_io::{write_to_file, create_file};
+use xdcbin_substr::file_io::{write_to_file, create_file, read_from_file};
 
 // std imports
 use std::{fs, cmp::Ordering};
@@ -17,7 +17,12 @@ fn main()
     println!("xdcbin");
     println!("powered with <3 by Rust");
 
-    let file_path: &str = "test_cases/lorem_ipsum_100_paragraphs";
+    // index("test_cases/lorem_ipsum_100_paragraphs");
+    search("amet", "charlen4.txt");
+    }
+
+fn index(file_path: &str)
+    {
     let content: String = fs::read_to_string(file_path).unwrap();
     let words: Vec<&str> = content.split(" ").collect();
     
@@ -51,4 +56,12 @@ fn main()
 
     create_file("charlen4.txt");
     write_to_file(charlen_4, "charlen4.txt");
+    }
+
+fn search(search_term: &str, file_name: &str)
+    {
+    let content: Vec<WordStruct> = read_from_file(file_name);
+
+    let len: u32 = search_term.len().try_into().unwrap();
+    let file_name_constructed = "charlen".to_string() + &len.to_string().as_str().to_owned() + ".txt";
     }

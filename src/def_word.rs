@@ -19,6 +19,11 @@ impl WordStruct
         let _ = &self.found.push(x);
         }
 
+    pub fn add_multiple_find_locations(&mut self, v: Vec<u128>)
+        {
+        &self.found.extend(v.into_iter());
+        }
+
     pub fn display(&self)
         {
         println!("word: {:?}, found: {:?}", &self.word, &self.found);

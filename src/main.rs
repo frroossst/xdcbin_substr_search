@@ -1,9 +1,16 @@
 #![allow(unused_parens)]
 
-use std::{fs, io::{Write}, cmp::Ordering};
+// modules
 
-mod def_word;
-use def_word::{WordStruct};
+// custom imports
+use xdcbin_substr::def_word::{WordStruct};
+use xdcbin_substr::file_io::{write_to_file};
+
+// std imports
+use std::{fs, cmp::Ordering};
+
+
+
 
 
 fn main()
@@ -44,14 +51,5 @@ fn main()
         }
 
 
-    // write_to_file(charlen_4, "charlen4.txt");
-    }
-
-fn write_to_file(vec_slice: Vec<&str>, file_name: &str)
-    {
-    let mut fobj = fs::File::create(file_name).unwrap();
-
-    let content = vec_slice.join(",");
-
-    fobj.write_all(content.as_bytes()).unwrap();
+    write_to_file(charlen_4, "charlen4.txt");
     }

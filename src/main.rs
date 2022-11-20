@@ -1,8 +1,10 @@
 #![allow(unused_parens)]
 
+
 use std::{fs, io::{Write}, ops::RangeFrom};
 mod def_word;
 use def_word::{WordStruct};
+
 
 fn main()
     {

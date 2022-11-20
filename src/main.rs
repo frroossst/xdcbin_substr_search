@@ -1,7 +1,7 @@
 #![allow(unused_parens)]
 
+use std::{fs, io::{Write}, cmp::Ordering};
 
-use std::{fs, io::{Write}, ops::RangeFrom};
 mod def_word;
 use def_word::{WordStruct};
 
@@ -11,27 +11,28 @@ fn main()
     println!("xdcbin");
     println!("powered with <3 by Rust");
 
-    let mut ws = WordStruct::new("lorem");
-    ws.add_find_location(0);
-    ws.add_find_location(1);
-    ws.add_find_location(10);
-    ws.display();
-
     let file_path: &str = "test_cases/lorem_ipsum_100_paragraphs";
     let content: String = fs::read_to_string(file_path).unwrap();
-    let words = content.split(" ");
-
+    let words: Vec<&str> = content.split(" ").collect();
     
     let mut charlen_4: Vec<WordStruct> = Vec::new();
 
-    let iter: RangeFrom<u128> = 1..;
-
-    for i in words
+    for (x, i) in words.iter().enumerate()
         {
         if (i.len() == 4)
             {
             let mut ws = WordStruct::new(i);
-            charlen_4.push(ws);
+            if charlen_4.contains(&ws)
+                {
+                let index = charlen_4.iter().position(|ws| ws.cmp(&WordStruct::new(i)) == Ordering::Equal).unwrap();
+                charlen_4[index].add_find_location(index.try_into().unwrap());
+                charlen_4[index].display();
+                }
+            else
+                {
+                ws.add_find_location(x.try_into().unwrap());
+                charlen_4.push(ws);
+                }
             }
         }
 
@@ -39,7 +40,7 @@ fn main()
 
     for j in charlen_4.iter()
         {
-        println!("{:?}", j.display());
+        j.display();
         }
 
 

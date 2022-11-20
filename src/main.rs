@@ -18,7 +18,7 @@ fn main()
     println!("powered with <3 by Rust");
 
     // index("test_cases/lorem_ipsum_100_paragraphs");
-    search("amet", "charlen4.txt");
+    search("amet");
     }
 
 fn index(file_path: &str)
@@ -58,10 +58,12 @@ fn index(file_path: &str)
     write_to_file(charlen_4, "charlen4.txt");
     }
 
-fn search(search_term: &str, file_name: &str)
+fn search(search_term: &str)
     {
-    let content: Vec<WordStruct> = read_from_file(file_name);
-
     let len: u32 = search_term.len().try_into().unwrap();
     let file_name_constructed = "charlen".to_string() + &len.to_string().as_str().to_owned() + ".txt";
+
+    let content: Vec<WordStruct> = read_from_file(file_name_constructed.as_str());
+
+    content[1].display();
     }

@@ -1,14 +1,10 @@
-#![allow(unused_variables)]
-#![allow(unused_imports)]
-
 use crate::def_word::{WordStruct};
 
-use std::{io::Write, fs::{File, OpenOptions}, vec};
-use std::fs;
+use std::{io::Write, fs::{OpenOptions}};
 
 pub fn create_file(file_name: &str)
     {
-    let file = OpenOptions::new().write(true).create_new(true).open(file_name).unwrap();
+    let _ = OpenOptions::new().write(true).create_new(true).open(file_name).unwrap();
     }
 
 pub fn write_to_file(vec_slice: Vec<WordStruct>, file_name: &str)

@@ -43,22 +43,17 @@ pub fn read_from_file(file_name: &str) -> Vec<WordStruct>
         let mut split: Vec<&str> = i.split(",").collect();
         let word = split[0];
         split = split[1..split.len()-1].to_vec();
-        split.into_iter().map(|f| convert_string_slice_to_u128(f));
+        let num_split = split.into_iter().map(|f| convert_string_slice_to_u128(f));
 
         println!("{:?}", word);
         println!("{:?}", i);
 
-        let ws = WordStruct::new(word);
-        // ws.add_multiple_find_locations(split);
+        // let ws = WordStruct::new(word);
 
-        // for mut j in split
-        //     {
-        //     j = j.trim();
-        //     if !j.is_empty()
-        //         {
-        //         println!("{:?}", j);
-        //         }
-        //     }
+        for j in num_split
+            {
+            println!("{:?}", j);
+            }
 
         // let ws: WordStruct = WordStruct::new(split[0]);
         // split.remove(0);

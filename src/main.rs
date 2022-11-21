@@ -18,7 +18,7 @@ fn main()
     println!("powered with <3 by Rust");
 
     // index("test_cases/lorem_ipsum_100_paragraphs");
-    search("amet");
+    // search("amet");
     }
 
 fn index(file_path: &str)

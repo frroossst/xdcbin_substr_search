@@ -21,7 +21,7 @@ impl WordStruct
 
     pub fn add_multiple_find_locations(&mut self, v: Vec<u128>)
         {
-        &self.found.extend(v.into_iter());
+        let _ = &self.found.extend(v.into_iter());
         }
 
     pub fn display(&self)

@@ -1,27 +1,32 @@
-struct str_to_u128
+pub struct StrToU128
     {
     slice: String,
     numbr: u128,
     }
 
-impl str_to_u128
+impl StrToU128
     {
-    fn new(slice: String) -> Self
+    pub fn new(slice: String) -> Self
         {
-        str_to_u128 { slice: slice, numbr: 0 }
+        StrToU128 { slice: slice, numbr: 0 }
         }
 
-    fn display(&self)
+    pub fn display(&self)
         {
-        print!("slice: {:?}; number: {:?}", self.slice, self.numbr);
+        println!("slice: {:?}; number: {:?}", self.slice, self.numbr);
         }
     }
 
 pub fn convert_string_slice_to_u128(s: &str) -> u128
     {
-    let stu = str_to_u128::new(s.to_string().chars().rev().collect());
+    let stu = StrToU128::new(s.to_string().chars().rev().collect());
 
-    stu.display();
-
-    return 100;
+    let mut whole: u128 = 0;
+    for (x, i) in stu.slice.chars().enumerate()
+        {
+        let pow10: u128 = 10_u128.pow(x.try_into().unwrap());
+        let num: u128 = i.to_digit(10).unwrap().try_into().unwrap();
+        whole += pow10 * num;
+        }
+    whole
     }

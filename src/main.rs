@@ -65,5 +65,13 @@ fn search(search_term: &str)
 
     let content: Vec<WordStruct> = read_from_file(file_name_constructed.as_str());
 
-    println!("{:?}", content.len());
+    bin_search_wordstruct_vec(content);
+    }
+
+fn bin_search_wordstruct_vec(v: Vec<WordStruct>) -> u128
+    {
+    
+
+
+    100
     }

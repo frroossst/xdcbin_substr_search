@@ -40,7 +40,7 @@ pub fn read_from_file(file_name: &str) -> Vec<WordStruct>
 
     for i in lines 
         {
-        if !(i.is_empty() || i.contains(char::is_whitespace))
+        if !(i.is_empty())
             {
             let mut split: Vec<&str> = i.split(",").collect();
             let word = split[0];
@@ -54,6 +54,7 @@ pub fn read_from_file(file_name: &str) -> Vec<WordStruct>
                 ws.add_find_location(j);
                 }
 
+            ws.display();
             struct_vec.push(ws);
             }
         }

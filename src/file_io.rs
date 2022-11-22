@@ -36,31 +36,26 @@ pub fn read_from_file(file_name: &str) -> Vec<WordStruct>
 
     let lines = buffer.split("\n");
 
-    let struct_vec: Vec<WordStruct> = Vec::new();
+    let mut struct_vec: Vec<WordStruct> = Vec::new();
 
     for i in lines 
         {
-        let mut split: Vec<&str> = i.split(",").collect();
-        let word = split[0];
-        split = split[1..split.len()-1].to_vec();
-        let num_split = split.into_iter().map(|f| convert_string_slice_to_u128(f));
-
-        println!("{:?}", word);
-        println!("{:?}", i);
-
-        // let ws = WordStruct::new(word);
-
-        for j in num_split
+        if !(i.is_empty() || i.contains(char::is_whitespace))
             {
-            println!("{:?}", j);
+            let mut split: Vec<&str> = i.split(",").collect();
+            let word = split[0];
+            split = split[1..split.len()-1].to_vec();
+            let num_split = split.into_iter().map(|f| convert_string_slice_to_u128(f));
+
+            let mut ws = WordStruct::new(word);
+
+            for j in num_split
+                {
+                ws.add_find_location(j);
+                }
+
+            struct_vec.push(ws);
             }
-
-        // let ws: WordStruct = WordStruct::new(split[0]);
-        // split.remove(0);
-        
-        // let split_128: Vec<u128> = split.iter().map(|&e| e as u32).collect();
-         
         }
-
     return struct_vec;
     }

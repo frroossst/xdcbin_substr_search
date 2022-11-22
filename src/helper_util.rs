@@ -24,9 +24,12 @@ pub fn convert_string_slice_to_u128(s: &str) -> u128
     let mut whole: u128 = 0;
     for (x, i) in stu.slice.chars().enumerate()
         {
-        let pow10: u128 = 10_u128.pow(x.try_into().unwrap());
-        let num: u128 = i.to_digit(10).unwrap().try_into().unwrap();
-        whole += pow10 * num;
+        if !i.is_whitespace()
+            {
+            let pow10: u128 = 10_u128.pow(x.try_into().unwrap());
+            let num: u128 = i.to_digit(10).unwrap().try_into().unwrap();
+            whole += pow10 * num;
+            }
         }
     whole
     }

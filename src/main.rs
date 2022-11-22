@@ -65,5 +65,5 @@ fn search(search_term: &str)
 
     let content: Vec<WordStruct> = read_from_file(file_name_constructed.as_str());
 
-    content[1].display();
+    println!("{:?}", content.len());
     }
